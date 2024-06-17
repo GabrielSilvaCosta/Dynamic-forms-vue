@@ -51,7 +51,6 @@
       </button>
     </form>
 
-    <!-- Lista de usuários cadastrados -->
     <div v-if="users.length > 0" class="mt-8">
       <h2 class="text-2xl font-bold mb-4">Usuários Cadastrados:</h2>
       <ul class="divide-y divide-gray-200">
@@ -91,21 +90,16 @@ export default {
   },
   methods: {
     addUser() {
-      // Adiciona um novo usuário à lista
-      // e reseta os campos do formulário
-      // não enviar formulario vazio
       if (this.newUser.name && this.newUser.email && this.newUser.phone) {
         this.users.push(this.newUser);
         this.newUser = { name: "", email: "", phone: "" };
       }
     },
 
-    // função para remover um usuário da lista
     removeUser(index) {
       this.users.splice(index, 1);
     },
 
-    // função para enviar o formulario e salvar no localStorage
     handleSubmit() {
       localStorage.setItem("users", JSON.stringify(this.users));
       alert("Formulário enviado com sucesso!");
